@@ -141,16 +141,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BrainfuckInterpreter.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="UCException.cpp" />
+    <ClCompile Include="src\BrainfuckInterpreter.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\UCException.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="hello_world.bf" />
+    <None Include="resources\hello_world.bf" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BrainfuckInterpreter.hpp" />
-    <ClInclude Include="UCException.hpp" />
+    <ClInclude Include="src\BrainfuckInterpreter.hpp" />
+    <ClInclude Include="src\UCException.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

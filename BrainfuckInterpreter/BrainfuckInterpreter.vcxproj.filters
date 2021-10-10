@@ -15,26 +15,26 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="UCException.cpp">
+    <ClCompile Include="src\UCException.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BrainfuckInterpreter.cpp">
+    <ClCompile Include="src\BrainfuckInterpreter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="hello_world.bf">
+    <None Include="resources\hello_world.bf">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UCException.hpp">
+    <ClInclude Include="src\UCException.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BrainfuckInterpreter.hpp">
+    <ClInclude Include="src\BrainfuckInterpreter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

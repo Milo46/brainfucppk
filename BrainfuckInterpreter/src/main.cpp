@@ -7,7 +7,7 @@
         bfinterpreter.exe -memory_size 40000 -connect_memory_ends
 
     TODO:
-        - Detect infinite loops! auto result = bfInterpreter.InterpretSection("++[><]", 0u);
+        - Detect infinite loops! //auto result = bfInterpreter.InterpretSection("++[><]", 0u);
 */
 
 #include <iostream>
@@ -20,14 +20,14 @@ int main(size_t argc, char** argv)
     try
     {
         BrainfuckIntrepreter bfInterpreter = { 30000u };
-        std::cout << bfInterpreter.InterpretFile("hello_world.bf") << '\n';
+        std::cout << bfInterpreter.InterpretFile("resources/hello_world.bf") << '\n';
     }
     catch (BrainfuckIntrepreter::Error& e)
     {
         std::cerr << "Brainfuck interpreter exception has occurred: \n"
-            "\tMessage: " << e.What() << "\n"
+            "\tMessage: "  << e.What()          << "\n"
             "\tPosition: " << e.GetTokenIndex() << "\n";
-        
+
         return EXIT_FAILURE;
     }
     catch (std::exception& e)
