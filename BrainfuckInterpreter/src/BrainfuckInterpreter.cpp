@@ -54,7 +54,7 @@ std::string BrainfuckIntrepreter::InterpretSection(const std::string& tokens, si
                 }
             }
 
-            // Automatically omit blank loops
+            // Automatically omits blank loops
             if (subSectionEndIndex - 1 != i) while (*m_Pointer != 0)
                 output += InterpretSection(tokens.substr(i + 1, subSectionEndIndex - i - 1), start + i);
 
