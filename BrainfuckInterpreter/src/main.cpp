@@ -19,10 +19,10 @@ int main(size_t argc, char** argv)
 {
     try
     {
-        BrainfuckIntrepreter bfInterpreter = { 30000u };
+        BrainfuckInterpreter bfInterpreter = { 30000u };
         std::cout << bfInterpreter.InterpretFile("resources/hello_world.bf") << '\n';
     }
-    catch (BrainfuckIntrepreter::Error& e)
+    catch (BrainfuckInterpreter::Error& e)
     {
         std::cerr << "Brainfuck interpreter exception has occurred: \n"
             "\tMessage: "  << e.What()          << "\n"

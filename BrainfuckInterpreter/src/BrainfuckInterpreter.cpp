@@ -1,14 +1,14 @@
 #include "BrainfuckInterpreter.hpp"
 
-BrainfuckIntrepreter::Error::Error(const char* message, size_t tokenIndex)
+BrainfuckInterpreter::Error::Error(const char* message, size_t tokenIndex)
     : UCException(message), m_TokenIndex(tokenIndex) {}
 
-size_t BrainfuckIntrepreter::Error::GetTokenIndex() const
+size_t BrainfuckInterpreter::Error::GetTokenIndex() const
 {
     return m_TokenIndex;
 }
 
-BrainfuckIntrepreter::BrainfuckIntrepreter(size_t memorySize)
+BrainfuckInterpreter::BrainfuckInterpreter(size_t memorySize)
 {
     m_Memory  = new unsigned char[memorySize];
     m_Pointer = m_Memory;
@@ -17,12 +17,12 @@ BrainfuckIntrepreter::BrainfuckIntrepreter(size_t memorySize)
         m_Memory[i] = 0u;
 }
 
-BrainfuckIntrepreter::~BrainfuckIntrepreter()
+BrainfuckInterpreter::~BrainfuckInterpreter()
 {
     delete[] m_Memory;
 }
 
-std::string BrainfuckIntrepreter::InterpretSection(const std::string& tokens, size_t start)
+std::string BrainfuckInterpreter::InterpretSection(const std::string& tokens, size_t start)
 {
     std::string output = "";
     for (size_t i = 0u; i < tokens.size(); ++i)
@@ -45,7 +45,7 @@ std::string BrainfuckIntrepreter::InterpretSection(const std::string& tokens, si
             while (bracketLevel > 0 && ++subSectionEndIndex)
             {
                 if (subSectionEndIndex == tokens.size())
-                    throw ::BrainfuckIntrepreter::Error{ "Failed to find ending bracket!", start + i };
+                    throw ::BrainfuckInterpreter::Error{ "Failed to find ending bracket!", start + i };
 
                 switch (tokens[subSectionEndIndex])
                 {
@@ -63,7 +63,7 @@ std::string BrainfuckIntrepreter::InterpretSection(const std::string& tokens, si
         }
 
         case ']':
-            throw ::BrainfuckIntrepreter::Error{ "Found ending bracket alone!", start + i };
+            throw ::BrainfuckInterpreter::Error{ "Found ending bracket alone!", start + i };
             break;
         }
     }
@@ -71,15 +71,15 @@ std::string BrainfuckIntrepreter::InterpretSection(const std::string& tokens, si
     return output;
 }
 
-std::string BrainfuckIntrepreter::InterpretFile(const std::string& filepath)
+std::string BrainfuckInterpreter::InterpretFile(const std::string& filepath)
 {
     std::fstream file(filepath, std::ios::in);
 
     if (!file.is_open())
-        throw BrainfuckIntrepreter::Error{ "Failed to read the file!", 0u };
+        throw BrainfuckInterpreter::Error{ "Failed to read the file!", 0u };
 
     std::string fileContent(std::istreambuf_iterator<char>(file), {});
     file.close();
 
-    return BrainfuckIntrepreter::InterpretSection(fileContent, 0u);
+    return BrainfuckInterpreter::InterpretSection(fileContent, 0u);
 }

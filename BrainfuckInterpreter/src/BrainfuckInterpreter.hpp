@@ -9,7 +9,7 @@
 #define NODISCARD(Message) [[nodiscard(Message)]]
 #define NODISCARD_BF_RESULT() NODISCARD("Returns brainfuck interpretation result!")
 
-class BrainfuckIntrepreter
+class BrainfuckInterpreter
 {
 public:
     class Error : public UCException
@@ -24,8 +24,8 @@ public:
     };
 
 public:
-    BrainfuckIntrepreter(size_t memorySize = 30000u);
-    ~BrainfuckIntrepreter();
+    BrainfuckInterpreter(size_t memorySize = 30000u);
+    ~BrainfuckInterpreter();
 
     NODISCARD_BF_RESULT()
     std::string InterpretSection(const std::string& tokens, size_t start = 0u);
