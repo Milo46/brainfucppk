@@ -11,35 +11,39 @@
 */
 
 #include <iostream>
+#include <vector>
 #include <string>
 
 #include "BrainfuckInterpreter.hpp"
+#include "ExceptionHandlers.hpp"
 
-int main(size_t argc, char** argv) 
+int main(size_t argc, char** argv)
 {
     try
     {
         BrainfuckInterpreter bfInterpreter = { 30000u };
         std::cout << bfInterpreter.InterpretFile("resources/hello_world.bf") << '\n';
+
+        return EXIT_SUCCESS;
     }
     catch (BrainfuckInterpreter::Error& e)
     {
         std::cerr << "Brainfuck interpreter exception has occurred: \n"
             "\tMessage: "  << e.What()          << "\n"
             "\tPosition: " << e.GetTokenIndex() << "\n";
-
-        return EXIT_FAILURE;
     }
     catch (std::exception& e)
     {
         std::cerr << "An exception has occurred: " << e.what() << '\n';
-        return EXIT_FAILURE;
     }
     catch (...)
     {
         std::cerr << "Something went really wrong, unhandled exception has been thrown!\n";
-        return EXIT_FAILURE;
     }
 
-    return EXIT_SUCCESS;
+    /*CATCH_BLOCK_BRAINFUCK_EXCEPTION()
+    CATCH_BLOCK_STANDARD_EXCEPTION()
+    CATCH_BLOCK_UNKNOWN_EXCEPTION()*/
+
+    return EXIT_FAILURE;
 }

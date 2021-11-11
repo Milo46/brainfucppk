@@ -5,9 +5,7 @@
 #include <string>
 
 #include "UCException.hpp"
-
-#define NODISCARD(Message) [[nodiscard(Message)]]
-#define NODISCARD_BF_RESULT() NODISCARD("Returns brainfuck interpretation result!")
+#include "BrainfuckAttributes.hpp"
 
 class BrainfuckInterpreter
 {
@@ -16,7 +14,6 @@ public:
     {
     public:
         Error(const char* message, size_t tokenIndex);
-
         size_t GetTokenIndex() const;
 
     private:
@@ -27,10 +24,10 @@ public:
     BrainfuckInterpreter(size_t memorySize = 30000u);
     ~BrainfuckInterpreter();
 
-    NODISCARD_BF_RESULT()
+    BRAINFUCK_NODISCARD_RESULT()
     std::string InterpretSection(const std::string& tokens, size_t start = 0u);
 
-    NODISCARD_BF_RESULT()
+    BRAINFUCK_NODISCARD_RESULT()
     std::string InterpretFile(const std::string& filepath);
 
 private:

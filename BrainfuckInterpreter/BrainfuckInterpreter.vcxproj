@@ -149,7 +149,9 @@
     <None Include="resources\hello_world.bf" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\BrainfuckAttributes.hpp" />
     <ClInclude Include="src\BrainfuckInterpreter.hpp" />
+    <ClInclude Include="src\ExceptionHandlers.hpp" />
     <ClInclude Include="src\UCException.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
