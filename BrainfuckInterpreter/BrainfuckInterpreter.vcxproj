@@ -29,26 +29,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -141,18 +141,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\BrainfuckInterpreter.cpp" />
+    <ClCompile Include="src\BfImplementation.cpp" />
+    <ClCompile Include="src\BfInterpreter.cpp" />
+    <ClCompile Include="src\BfConfiguration.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\UCException.cpp" />
+    <ClCompile Include="src\StandardBfInterpretation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\hello_world.bf" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\BrainfuckAttributes.hpp" />
-    <ClInclude Include="src\BrainfuckInterpreter.hpp" />
-    <ClInclude Include="src\ExceptionHandlers.hpp" />
-    <ClInclude Include="src\UCException.hpp" />
+    <ClInclude Include="src\BfImplementation.hpp" />
+    <ClInclude Include="src\BfInterpreter.hpp" />
+    <ClInclude Include="src\BfTokens.hpp" />
+    <ClInclude Include="src\BfConfiguration.hpp" />
+    <ClInclude Include="src\StandardBfInterpretation.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

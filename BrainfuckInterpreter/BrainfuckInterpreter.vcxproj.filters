@@ -18,10 +18,16 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\UCException.cpp">
+    <ClCompile Include="src\BfInterpreter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BrainfuckInterpreter.cpp">
+    <ClCompile Include="src\StandardBfInterpretation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BfImplementation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BfConfiguration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -31,16 +37,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\UCException.hpp">
+    <ClInclude Include="src\BfInterpreter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\BrainfuckInterpreter.hpp">
+    <ClInclude Include="src\BfImplementation.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\ExceptionHandlers.hpp">
+    <ClInclude Include="src\StandardBfInterpretation.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\BrainfuckAttributes.hpp">
+    <ClInclude Include="src\BfTokens.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BfConfiguration.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
