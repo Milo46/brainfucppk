@@ -26,12 +26,12 @@ public:
     BrainfuckInterpreter();
     ~BrainfuckInterpreter();
 
-    void InterpretSection(const std::string& tokens, size_t prevIndex = 0u);
+    void InterpretSection(const std::string& source, size_t prevIndex = 0u);
     void InterpretFile(const std::string& filepath);
 
 private:
+    BrainfuckImplementation* m_Implementation = nullptr;
+
     unsigned char* m_Memory  = nullptr;
     unsigned char* m_Pointer = nullptr;
-
-    BrainfuckImplementation* m_Implementation = nullptr;
 };

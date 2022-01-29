@@ -5,16 +5,20 @@
 
 #include "StandardBfInterpretation.hpp"
 
-BrainfuckImplementation* GetBrainfuckImplementation(BrainfuckInterpreter* interpreter)
+BrainfuckImplementation* GetBrainfuckImplementation(unsigned char* pointer)
 {
     switch (BrainfuckConfiguration::GetBrainfuckAPI())
     {
-    case BrainfuckAPI::Standard: return new StandardBrainfuckImplementation(interpreter);
+    case BrainfuckAPI::Standard: return new StandardBrainfuckImplementation(pointer);
 
     default:
         throw std::exception{ "Unknown BrainfuckAPI!" };
     }
 }
 
-BrainfuckImplementation::BrainfuckImplementation(BrainfuckInterpreter* interpreter)
-    : m_Interpreter(interpreter), p_Memory(interpreter->m_Memory), p_Pointer(interpreter->m_Pointer) {}
+BrainfuckImplementation::BrainfuckImplementation(unsigned char* pointer)
+    : p_Pointer(pointer)
+{
+    if (!pointer) std::cout << "Pointer is nullptr!\n";
+}
+

@@ -12,32 +12,38 @@ size_t BrainfuckInterpreter::Error::GetTokenIndex() const
 }
 
 BrainfuckInterpreter::BrainfuckInterpreter()
-    : m_Memory(new unsigned char[BrainfuckConfiguration::GetMemorySize()]), m_Pointer(m_Memory),
-    m_Implementation(GetBrainfuckImplementation(this))
 {
+    m_Memory  = new unsigned char[BrainfuckConfiguration::GetMemorySize()];
+    m_Pointer = m_Memory;
+
     for (size_t i = 0u; i < BrainfuckConfiguration::GetMemorySize(); ++i)
         m_Memory[i] = 0u;
+
+    m_Implementation = GetBrainfuckImplementation(m_Pointer);
 }
 
 BrainfuckInterpreter::~BrainfuckInterpreter()
 {
     delete[] m_Memory;
+    delete m_Implementation;
 }
 
-void BrainfuckInterpreter::InterpretSection(const std::string& tokens, size_t prevIndex)
+void BrainfuckInterpreter::InterpretSection(const std::string& source, size_t prevIndex)
 {
-    for (size_t i = 0u; i < tokens.size(); ++i)
+    for (std::size_t i = 0u; i < source.size(); ++i)
     {
-        switch (tokens[i])
+        switch (source[i])
         {
-        case BrainfuckToken::IncrementPointer: m_Implementation->IncrementPointer(tokens, i);     break;
-        case BrainfuckToken::DecrementPointer: m_Implementation->DecrementPointer(tokens, i);     break;
-        case BrainfuckToken::IncrementValue:   m_Implementation->IncrementValue(tokens, i);       break;
-        case BrainfuckToken::DecrementValue:   m_Implementation->DecrementValue(tokens, i);       break;
-        case BrainfuckToken::Write:            m_Implementation->Write(tokens, i);                break;
-        case BrainfuckToken::Read:             m_Implementation->Read(tokens, i);                 break;
-        case BrainfuckToken::BeginLoop:        m_Implementation->BeginLoop(tokens, i, prevIndex); break;
-        case BrainfuckToken::EndLoop:          m_Implementation->EndLoop(tokens, i, prevIndex);   break;
+        case BrainfuckToken::IncrementPointer: m_Implementation->IncrementPointer(source, i); break;
+        case BrainfuckToken::DecrementPointer: m_Implementation->DecrementPointer(source, i); break;
+        case BrainfuckToken::IncrementValue:   m_Implementation->IncrementValue(source, i);   break;
+        case BrainfuckToken::DecrementValue:   m_Implementation->DecrementValue(source, i);   break;
+        case BrainfuckToken::Write:            m_Implementation->Write(source, i);            break;
+        case BrainfuckToken::Read:             m_Implementation->Read(source, i);             break;
+        case BrainfuckToken::BeginLoop:        m_Implementation->BeginLoop(source, i);        break;
+        case BrainfuckToken::EndLoop:          m_Implementation->EndLoop(source, i);          break;
+
+        default: break; // ignore every other character / undefined token
         }
     }
 }
