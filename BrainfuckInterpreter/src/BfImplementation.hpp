@@ -9,6 +9,7 @@ class BrainfuckImplementation;
 
 BrainfuckImplementation* GetBrainfuckImplementation(unsigned char* pointer);
 
+// Implement: LoadTokens(jsonFile) + VerifyTokens(tokens)
 class BrainfuckImplementation
 {
 public:

@@ -32,9 +32,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\hello_world.bf">
+    <None Include="resources\scripts\hello_world.bf">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="resources\implementations\bf_standard.json" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BfInterpreter.hpp">

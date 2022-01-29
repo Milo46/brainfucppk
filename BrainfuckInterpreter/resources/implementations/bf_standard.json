@@ -1,0 +1,12 @@
+{
+    "BrainfuckTokens": {
+        "IncrementPointer": ">",
+        "DecrementPointer": "<",
+        "IncrementValue":   "+",
+        "DecrementValue":   "-",
+        "Write":            ".",
+        "Read":             ",",
+        "BeginLoop":        "[",
+        "EndLoop":          "]"
+    }
+}

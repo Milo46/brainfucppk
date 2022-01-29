@@ -148,7 +148,8 @@
     <ClCompile Include="src\StandardBfInterpretation.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\hello_world.bf" />
+    <None Include="resources\implementations\bf_standard.json" />
+    <None Include="resources\scripts\hello_world.bf" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BfImplementation.hpp" />
