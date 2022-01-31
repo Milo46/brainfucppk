@@ -1,0 +1,10 @@
+{
+    "Name": "Hello, World!",
+    "Implementation": "Standard",
+
+    "ShareMemory": false,
+
+    "Sources": [
+        "hello_world.bf"
+    ]
+}

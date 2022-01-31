@@ -28,10 +28,12 @@ BrainfuckInterpreter::~BrainfuckInterpreter()
     delete m_Implementation;
 }
 
-void BrainfuckInterpreter::InterpretSection(const std::string& source, size_t prevIndex)
+void BrainfuckInterpreter::InterpretSection(const std::string& source)
 {
     for (std::size_t i = 0u; i < source.size(); ++i)
     {
+        //m_Implementation->GetMethod(source[i])(source, i);
+
         switch (source[i])
         {
         case BrainfuckToken::IncrementPointer: m_Implementation->IncrementPointer(source, i); break;
@@ -50,13 +52,44 @@ void BrainfuckInterpreter::InterpretSection(const std::string& source, size_t pr
 
 void BrainfuckInterpreter::InterpretFile(const std::string& filepath)
 {
-    std::fstream file(filepath, std::ios::in);
+    auto file = std::ifstream{ filepath };
 
     if (!file.is_open())
         throw BrainfuckInterpreter::Error{ "Failed to read the file!", 0u };
 
-    std::string fileContent(std::istreambuf_iterator<char>(file), {});
+    auto fileContent = std::string{ std::istreambuf_iterator<char>(file), {} };
     file.close();
 
-    return BrainfuckInterpreter::InterpretSection(fileContent, 0u);
+    return BrainfuckInterpreter::InterpretSection(fileContent);
+}
+
+void BrainfuckInterpreter::LoadProject(const std::string& filepath)
+{
+    auto file = std::ifstream{ filepath };
+
+    if (!file.is_open())
+        throw BrainfuckInterpreter::Error{ "Failed to load the project file!", 0u };
+
+    auto json = nlohmann::json::parse(file);
+
+    if (!ValidateProjectFile(json))
+        throw BrainfuckInterpreter::Error{ "Ill constructed project file!", 0u };
+}
+
+bool BrainfuckInterpreter::ValidateProjectFile(const nlohmann::json& json)
+{
+    //if (!json.contains("Name") || !json["Name"].is_string()) return false;
+
+    try
+    {
+        const std::string& name           = json.at("Name");
+        const std::string& implementation = json.at("Implementation");
+        const bool& shareMemory           = json.at("ShareMemory");
+        const nlohmann::json& sources     = json.at("Sources");
+    }
+    catch (nlohmann::json::out_of_range& e) { return false; }
+    catch (nlohmann::json::type_error& e) { return false; }
+    catch (...) { return false; }
+
+    return true;
 }

@@ -3,6 +3,7 @@
 #include "BfTokens.hpp"
 
 #include <string>
+#include <map>
 
 class BrainfuckInterpreter;
 class BrainfuckImplementation;
@@ -28,4 +29,7 @@ public:
 
 protected:
     unsigned char* p_Pointer;
+
+private:
+    std::map<std::string, unsigned char> m_Tokens;
 };

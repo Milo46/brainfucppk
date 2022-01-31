@@ -14,7 +14,9 @@
 */
 
 #include <iostream>
+#include <optional>
 
+#include <nlohmann/json.hpp>
 #include "BfInterpreter.hpp"
 
 int main(int argc, char** argv)
@@ -22,7 +24,9 @@ int main(int argc, char** argv)
     try
     {
         BrainfuckInterpreter bfInterpreter{};
-        bfInterpreter.InterpretFile("resources/hello_world.bf");
+        //bfInterpreter.InterpretFile("resources/scripts/hello_world.json");
+
+        bfInterpreter.LoadProject("resources/scripts/hello_world.json");
 
         return EXIT_SUCCESS;
     }

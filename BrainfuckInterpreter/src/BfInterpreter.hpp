@@ -4,6 +4,8 @@
 #include <fstream>
 #include <string>
 
+#include <nlohmann/json.hpp>
+
 #include "BfImplementation.hpp"
 
 class BrainfuckInterpreter
@@ -26,8 +28,13 @@ public:
     BrainfuckInterpreter();
     ~BrainfuckInterpreter();
 
-    void InterpretSection(const std::string& source, size_t prevIndex = 0u);
+    void InterpretSection(const std::string& source);
     void InterpretFile(const std::string& filepath);
+
+    void LoadProject(const std::string& filepath);
+
+private:
+    bool ValidateProjectFile(const nlohmann::json& json);
 
 private:
     BrainfuckImplementation* m_Implementation = nullptr;
