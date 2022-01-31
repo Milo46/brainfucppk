@@ -21,7 +21,7 @@
     <ClCompile Include="src\BfInterpreter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\StandardBfInterpretation.cpp">
+    <ClCompile Include="src\StandardBfImplementation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\BfImplementation.cpp">
@@ -35,7 +35,7 @@
     <None Include="resources\scripts\hello_world.bf">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="resources\implementations\bf_standard.json" />
+    <None Include="resources\scripts\hello_world.json" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BfInterpreter.hpp">
@@ -44,7 +44,7 @@
     <ClInclude Include="src\BfImplementation.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\StandardBfInterpretation.hpp">
+    <ClInclude Include="src\StandardBfImplementation.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\BfTokens.hpp">

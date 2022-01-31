@@ -3,7 +3,7 @@
 
 #include "BfConfiguration.hpp"
 
-#include "StandardBfInterpretation.hpp"
+#include "StandardBfImplementation.hpp"
 
 BrainfuckImplementation* GetBrainfuckImplementation(unsigned char* pointer)
 {

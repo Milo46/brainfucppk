@@ -88,6 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\vendor\json\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -102,6 +103,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\vendor\json\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -117,6 +119,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>..\vendor\json\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -132,6 +135,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalIncludeDirectories>..\vendor\json\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,18 +149,18 @@
     <ClCompile Include="src\BfInterpreter.cpp" />
     <ClCompile Include="src\BfConfiguration.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\StandardBfInterpretation.cpp" />
+    <ClCompile Include="src\StandardBfImplementation.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\implementations\bf_standard.json" />
     <None Include="resources\scripts\hello_world.bf" />
+    <None Include="resources\scripts\hello_world.json" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\BfImplementation.hpp" />
     <ClInclude Include="src\BfInterpreter.hpp" />
     <ClInclude Include="src\BfTokens.hpp" />
     <ClInclude Include="src\BfConfiguration.hpp" />
-    <ClInclude Include="src\StandardBfInterpretation.hpp" />
+    <ClInclude Include="src\StandardBfImplementation.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
