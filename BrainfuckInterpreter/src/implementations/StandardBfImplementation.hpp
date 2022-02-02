@@ -4,9 +4,9 @@
 
 #include <map>
 
-enum StandardBrainfuckToken : char
+enum class StandardBrainfuckToken : char
 {
-    Begin = BrainfuckToken::End,
+    Begin = static_cast<char>(BrainfuckToken::End),
     End,
 };
 

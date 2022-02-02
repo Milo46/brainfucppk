@@ -1,6 +1,6 @@
 #pragma once
 
-enum BrainfuckToken : char
+enum class BrainfuckToken : char
 {
     IncrementPointer = '>',
     DecrementPointer = '<',

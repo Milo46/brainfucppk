@@ -2,9 +2,9 @@
 
 #include "StandardBfImplementation.hpp"
 
-enum ExtendedBrainfuckToken : char
+enum class ExtendedBrainfuckToken : char
 {
-    Begin = StandardBrainfuckToken::End,
+    Begin = static_cast<char>(StandardBrainfuckToken::End),
 
     _Token1 = '@',
     _Token2 = '$',

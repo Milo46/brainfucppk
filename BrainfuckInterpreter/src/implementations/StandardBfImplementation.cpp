@@ -12,8 +12,8 @@ static std::size_t FindClosingBracket(const std::string& source, std::size_t sta
     {
         switch (source[i])
         {
-        case BrainfuckToken::BeginLoop: ++bracketLevel; break;
-        case BrainfuckToken::EndLoop: if (!(--bracketLevel)) return i; break;
+        case static_cast<char>(BrainfuckToken::BeginLoop): ++bracketLevel; break;
+        case static_cast<char>(BrainfuckToken::EndLoop): if (!(--bracketLevel)) return i; break;
 
         default: break;
         }
@@ -29,14 +29,14 @@ bool StandardBrainfuckImplementation::ResolveToken(const std::string& source, st
 {
     switch (source[index])
     {
-    case BrainfuckToken::IncrementPointer: IncrementPointer(source, index); break;
-    case BrainfuckToken::DecrementPointer: DecrementPointer(source, index); break;
-    case BrainfuckToken::IncrementValue:   IncrementValue(source, index);   break;
-    case BrainfuckToken::DecrementValue:   DecrementValue(source, index);   break;
-    case BrainfuckToken::Write:            Write(source, index);            break;
-    case BrainfuckToken::Read:             Read(source, index);             break;
-    case BrainfuckToken::BeginLoop:        BeginLoop(source, index);        break;
-    case BrainfuckToken::EndLoop:          EndLoop(source, index);          break;
+    case static_cast<char>(BrainfuckToken::IncrementPointer): IncrementPointer(source, index); break;
+    case static_cast<char>(BrainfuckToken::DecrementPointer): DecrementPointer(source, index); break;
+    case static_cast<char>(BrainfuckToken::IncrementValue):   IncrementValue(source, index);   break;
+    case static_cast<char>(BrainfuckToken::DecrementValue):   DecrementValue(source, index);   break;
+    case static_cast<char>(BrainfuckToken::Write):            Write(source, index);            break;
+    case static_cast<char>(BrainfuckToken::Read):             Read(source, index);             break;
+    case static_cast<char>(BrainfuckToken::BeginLoop):        BeginLoop(source, index);        break;
+    case static_cast<char>(BrainfuckToken::EndLoop):          EndLoop(source, index);          break;
 
     default: return false;
     }
