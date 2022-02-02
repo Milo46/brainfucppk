@@ -23,6 +23,29 @@ static std::size_t FindClosingBracket(const std::string& source, std::size_t sta
 StandardBrainfuckImplementation::StandardBrainfuckImplementation(unsigned char* pointer)
     : BrainfuckImplementation(pointer), m_LoopsPositions() {}
 
+BrainfuckImplementation::TokenCallback StandardBrainfuckImplementation::ResolveToken(char token)
+{
+    const std::map<char, BrainfuckImplementation::TokenCallback> callbacks = {
+        { BrainfuckToken::IncrementPointer, BF_BIND(StandardBrainfuckImplementation::IncrementPointer) },
+        { BrainfuckToken::DecrementPointer, BF_BIND(StandardBrainfuckImplementation::DecrementPointer) },
+        { BrainfuckToken::IncrementValue,   BF_BIND(StandardBrainfuckImplementation::IncrementValue)   },
+        { BrainfuckToken::DecrementValue,   BF_BIND(StandardBrainfuckImplementation::DecrementValue)   },
+        { BrainfuckToken::Write,            BF_BIND(StandardBrainfuckImplementation::Write)            },
+        { BrainfuckToken::Read,             BF_BIND(StandardBrainfuckImplementation::Read)             },
+        { BrainfuckToken::BeginLoop,        BF_BIND(StandardBrainfuckImplementation::BeginLoop)        },
+        { BrainfuckToken::EndLoop,          BF_BIND(StandardBrainfuckImplementation::EndLoop)          },
+    };
+
+    auto blankCallback = [](const std::string&, std::size_t&) -> void {
+        return void();
+    };
+
+    if (callbacks.find(token) == callbacks.end())
+        return blankCallback;
+
+    return callbacks.at(token);
+}
+
 void StandardBrainfuckImplementation::IncrementPointer(const std::string& source, std::size_t& index) { ++p_Pointer; }
 void StandardBrainfuckImplementation::DecrementPointer(const std::string& source, std::size_t& index) { --p_Pointer; }
 void StandardBrainfuckImplementation::IncrementValue(const std::string& source, std::size_t& index) { ++(*p_Pointer); }

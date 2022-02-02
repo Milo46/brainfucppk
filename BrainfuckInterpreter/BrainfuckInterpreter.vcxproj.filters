@@ -18,16 +18,16 @@
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BfInterpreter.cpp">
+    <ClCompile Include="src\core\BfInterpreter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\StandardBfImplementation.cpp">
+    <ClCompile Include="src\implementations\StandardBfImplementation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BfImplementation.cpp">
+    <ClCompile Include="src\core\BfImplementation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\BfConfiguration.cpp">
+    <ClCompile Include="src\core\BfConfiguration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -38,19 +38,19 @@
     <None Include="resources\scripts\hello_world.json" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\BfInterpreter.hpp">
+    <ClInclude Include="src\core\BfInterpreter.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\BfImplementation.hpp">
+    <ClInclude Include="src\core\BfImplementation.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\StandardBfImplementation.hpp">
+    <ClInclude Include="src\implementations\StandardBfImplementation.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\BfTokens.hpp">
+    <ClInclude Include="src\core\BfTokens.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\BfConfiguration.hpp">
+    <ClInclude Include="src\core\BfConfiguration.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
