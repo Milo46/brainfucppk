@@ -1,7 +1,6 @@
 #pragma once
 
 #include "core/BfImplementation.hpp"
-#include "core/BfInterpreter.hpp"
 
 #include <map>
 
@@ -11,7 +10,7 @@ public:
     StandardBrainfuckImplementation(unsigned char* pointer);
 
 protected:
-    virtual void ResolveToken(const std::string& source, std::size_t& index) override;
+    virtual bool ResolveToken(const std::string& source, std::size_t& index) override;
 
 private:
     void IncrementPointer(const std::string& source, std::size_t& index);

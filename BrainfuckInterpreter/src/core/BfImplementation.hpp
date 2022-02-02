@@ -25,7 +25,8 @@ public:
     BrainfuckImplementation(unsigned char* pointer);
 
 public:
-    virtual void ResolveToken(const std::string& source, std::size_t& index) = 0;
+    // Returns false if token has not been resolved!
+    virtual bool ResolveToken(const std::string& source, std::size_t& index) = 0;
 
 protected:
     unsigned char* p_Pointer;

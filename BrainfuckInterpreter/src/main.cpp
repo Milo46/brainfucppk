@@ -23,8 +23,8 @@ int main(int argc, char** argv)
 {
     try
     {
-        BrainfuckInterpreter bfInterpreter{};
-        bfInterpreter.ExecuteProject("resources/scripts/hello_world.json");
+        BrainfuckInterpreter interpreter{ 30'000u };
+        interpreter.ExecuteProject("resources/scripts/hello_world.json");
 
         return EXIT_SUCCESS;
     }

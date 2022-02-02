@@ -1,5 +1,7 @@
 #include "StandardBfImplementation.hpp"
 
+#include "core/BfInterpreter.hpp"
+
 #include <iostream>
 
 static std::size_t FindClosingBracket(const std::string& source, std::size_t start)
@@ -23,7 +25,7 @@ static std::size_t FindClosingBracket(const std::string& source, std::size_t sta
 StandardBrainfuckImplementation::StandardBrainfuckImplementation(unsigned char* pointer)
     : BrainfuckImplementation(pointer), m_LoopsPositions() {}
 
-void StandardBrainfuckImplementation::ResolveToken(const std::string& source, std::size_t& index)
+bool StandardBrainfuckImplementation::ResolveToken(const std::string& source, std::size_t& index)
 {
     switch (source[index])
     {
@@ -36,8 +38,10 @@ void StandardBrainfuckImplementation::ResolveToken(const std::string& source, st
     case BrainfuckToken::BeginLoop:        BeginLoop(source, index);        break;
     case BrainfuckToken::EndLoop:          EndLoop(source, index);          break;
 
-    default: break;
+    default: return false;
     }
+
+    return true;
 }
 
 void StandardBrainfuckImplementation::IncrementPointer(const std::string& source, std::size_t& index) { ++p_Pointer; }

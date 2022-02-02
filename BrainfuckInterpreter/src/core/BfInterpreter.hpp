@@ -34,12 +34,10 @@ public:
     };
 
 public:
-    BrainfuckInterpreter();
+    BrainfuckInterpreter(uint32_t memorySize);
     ~BrainfuckInterpreter();
 
-    //void InterpretSection(const std::string& source);
     void InterpretFile(const std::string& filepath);
-
     void ExecuteProject(const std::string& filepath);
 
 private:
@@ -50,4 +48,6 @@ private:
 
     unsigned char* m_Memory  = nullptr;
     unsigned char* m_Pointer = nullptr;
+
+    uint32_t m_MemorySize;
 };

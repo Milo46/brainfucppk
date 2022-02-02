@@ -30,6 +30,9 @@
     <ClCompile Include="src\core\BfConfiguration.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\implementations\ExtendedBfImplementation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\scripts\hello_world.bf">
@@ -51,6 +54,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\core\BfConfiguration.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\implementations\ExtendedBfImplementation.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

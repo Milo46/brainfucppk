@@ -3,10 +3,6 @@
 #include "BfConfiguration.hpp"
 #include "BfTokens.hpp"
 
-// todo: create header with macros
-
-#define LOG(x) std::cout << #x << ": " << x << '\n'
-
 #define THROW_BF_ERROR(_Message, _Index) \
     throw ::BrainfuckInterpreter::Error{ _Message, _Index }
 
@@ -37,13 +33,14 @@ size_t BrainfuckInterpreter::Error::GetTokenIndex() const
     return m_TokenIndex;
 }
 
-BrainfuckInterpreter::BrainfuckInterpreter()
+BrainfuckInterpreter::BrainfuckInterpreter(uint32_t memorySize)
+    : m_MemorySize(memorySize)
 {
-    m_Memory  = new unsigned char[BrainfuckConfiguration::GetMemorySize()];
+    m_Memory  = new unsigned char[m_MemorySize];
     m_Pointer = m_Memory;
 
-    for (size_t i = 0u; i < BrainfuckConfiguration::GetMemorySize(); ++i)
-        m_Memory[i] = 0u;
+    for (size_t i = 0u; i < m_MemorySize; ++i)
+        m_Memory[i] = 0;
 }
 
 BrainfuckInterpreter::~BrainfuckInterpreter()
@@ -51,32 +48,10 @@ BrainfuckInterpreter::~BrainfuckInterpreter()
     delete[] m_Memory;
 }
 
-/*void BrainfuckInterpreter::InterpretSection(const std::string& source)
-{
-    for (std::size_t i = 0u; i < source.size(); ++i)
-    {
-        //m_Implementation->(source, i);
-
-        switch (source[i])
-        {
-        case BrainfuckToken::IncrementPointer: m_Implementation->IncrementPointer(source, i); break;
-        case BrainfuckToken::DecrementPointer: m_Implementation->DecrementPointer(source, i); break;
-        case BrainfuckToken::IncrementValue:   m_Implementation->IncrementValue(source, i);   break;
-        case BrainfuckToken::DecrementValue:   m_Implementation->DecrementValue(source, i);   break;
-        case BrainfuckToken::Write:            m_Implementation->Write(source, i);            break;
-        case BrainfuckToken::Read:             m_Implementation->Read(source, i);             break;
-        case BrainfuckToken::BeginLoop:        m_Implementation->BeginLoop(source, i);        break;
-        case BrainfuckToken::EndLoop:          m_Implementation->EndLoop(source, i);          break;
-
-        default: break; // ignore every other character / undefined token
-        }
-    }
-}*/
-
 void BrainfuckInterpreter::InterpretFile(const std::string& filepath)
 {
     if (!m_Implementation)
-        m_Implementation = GetBrainfuckImplementation("Standard", m_Pointer);
+        m_Implementation = GetBrainfuckImplementation(BrainfuckImplementationEnum::Standard, m_Pointer);
 
     auto source = LoadFileContent(filepath);
 
@@ -131,7 +106,7 @@ void BrainfuckInterpreter::ExecuteProject(const std::string& filepath)
 
 void BrainfuckInterpreter::ResetEnvironment()
 {
-    for (size_t i = 0u; i < BrainfuckConfiguration::GetMemorySize(); ++i)
-        m_Memory[i] = 0u;
+    for (size_t i = 0u; i < m_MemorySize; ++i)
+        m_Memory[i] = 0;
     m_Pointer = m_Memory;
 }
