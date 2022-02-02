@@ -3,8 +3,16 @@
 #include "BfConfiguration.hpp"
 #include "BfTokens.hpp"
 
+#include <optional>
+
 #define THROW_BF_ERROR(_Message, _Index) \
     throw ::BrainfuckInterpreter::Error{ _Message, _Index }
+
+static std::optional<unsigned char> Func(int x)
+{
+    if (!(x % 2)) return 'X';
+    return std::nullopt;
+}
 
 static std::string ExportFileDirectory(const std::string& filepath)
 {
@@ -34,7 +42,7 @@ size_t BrainfuckInterpreter::Error::GetTokenIndex() const
 }
 
 BrainfuckInterpreter::BrainfuckInterpreter(uint32_t memorySize)
-    : m_MemorySize(memorySize)
+    : m_MemorySize(memorySize), m_Output()
 {
     m_Memory  = new unsigned char[m_MemorySize];
     m_Pointer = m_Memory;
@@ -55,8 +63,12 @@ void BrainfuckInterpreter::InterpretFile(const std::string& filepath)
 
     auto source = LoadFileContent(filepath);
 
-    for (std::size_t i = 0u; i < source.size(); ++i)
-        m_Implementation->ResolveToken(source, i);
+    try
+    {
+        for (std::size_t i = 0u; i < source.size(); ++i)
+            m_Implementation->ResolveToken(source, i);
+    }
+    catch (EndProgram&) {}
 }
 
 void BrainfuckInterpreter::ExecuteProject(const std::string& filepath)

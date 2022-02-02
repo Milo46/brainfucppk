@@ -2,14 +2,12 @@
     "ProjectVersion": 1,
 
     "Name": "Hello, World!",
-    "Implementation": "Standard",
+    "Implementation": "Extended1",
 
     "ShareMemory": false,
 
     "Sources": [
         "hello_world.bf",
-        "hello_world.bf",
-        "hello_world.bf",
-        "hello_world.bf"
+        "hello_world_ext1.bf"
     ]
 }

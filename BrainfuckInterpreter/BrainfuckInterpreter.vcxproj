@@ -155,6 +155,7 @@
   <ItemGroup>
     <None Include="resources\scripts\hello_world.bf" />
     <None Include="resources\scripts\hello_world.json" />
+    <None Include="resources\scripts\hello_world_ext1.bf" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\core\BfImplementation.hpp" />

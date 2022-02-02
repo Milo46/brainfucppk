@@ -23,6 +23,8 @@ struct JsonProjectInfo
 class BrainfuckInterpreter
 {
 public:
+    struct EndProgram {};
+
     class Error : public std::exception
     {
     public:
@@ -50,4 +52,5 @@ private:
     unsigned char* m_Pointer = nullptr;
 
     uint32_t m_MemorySize;
+    std::string m_Output;
 };

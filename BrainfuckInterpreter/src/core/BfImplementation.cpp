@@ -4,10 +4,11 @@
 #include "core/BfConfiguration.hpp"
 
 #include "implementations/StandardBfImplementation.hpp"
+#include "implementations/ExtendedBfImplementation.hpp"
 
 const std::map<std::string, BrainfuckImplementationEnum> c_BrainfuckImplementations = {
     { "Standard", BrainfuckImplementationEnum::Standard },
-    { "Extended", BrainfuckImplementationEnum::Extended }
+    { "Extended1", BrainfuckImplementationEnum::Extended1 }
 };
 
 BrainfuckImplementationEnum GetBrainfuckImplementationFromString(const std::string& name)
@@ -27,8 +28,8 @@ BrainfuckImplementation* GetBrainfuckImplementation(BrainfuckImplementationEnum 
 {
     switch (implementation)
     {
-    case BrainfuckImplementationEnum::Standard: return new StandardBrainfuckImplementation(pointer);
-        //case BrainfuckImplementationEnum::Extended: return new ExtendedBrainfuckImplementation(pointer);
+    case BrainfuckImplementationEnum::Standard:  return new StandardBrainfuckImplementation(pointer);
+    case BrainfuckImplementationEnum::Extended1: return new ExtendedBrainfuckImplementation(pointer);
 
     default:
         throw std::exception{ "Could not retrieve existing implementation! " };

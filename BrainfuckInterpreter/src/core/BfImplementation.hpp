@@ -12,7 +12,7 @@ class BrainfuckImplementation;
 enum class BrainfuckImplementationEnum
 {
     Standard,
-    Extended,
+    Extended1,
 };
 
 BrainfuckImplementationEnum GetBrainfuckImplementationFromString(const std::string& name);
