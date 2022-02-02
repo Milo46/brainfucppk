@@ -4,6 +4,12 @@
 
 #include <map>
 
+enum StandardBrainfuckToken : char
+{
+    Begin = BrainfuckToken::End,
+    End,
+};
+
 class StandardBrainfuckImplementation : public BrainfuckImplementation
 {
 public:

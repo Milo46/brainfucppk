@@ -10,4 +10,6 @@ enum BrainfuckToken : char
     Read             = ',',
     BeginLoop        = '[',
     EndLoop          = ']',
+
+    End,
 };

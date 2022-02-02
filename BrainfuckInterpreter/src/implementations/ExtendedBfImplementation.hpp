@@ -2,6 +2,23 @@
 
 #include "StandardBfImplementation.hpp"
 
+enum ExtendedBrainfuckToken : char
+{
+    Begin = StandardBrainfuckToken::End,
+
+    _Token1 = '@',
+    _Token2 = '$',
+    _Token3 = '!',
+    _token4 = '}',
+    _Token5 = '{',
+    _Token6 = '~',
+    _Token7 = '^',
+    _Token8 = '&',
+    _Token9 = '|',
+
+    End,
+};
+
 class ExtendedBrainfuckImplementation : public StandardBrainfuckImplementation
 {
 public:
