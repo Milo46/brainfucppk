@@ -5,37 +5,30 @@
 
 #include "implementations/StandardBfImplementation.hpp"
 
-BrainfuckImplementation* GetBrainfuckImplementation(unsigned char* pointer)
-{
-    switch (BrainfuckConfiguration::GetBrainfuckAPI())
-    {
-    case BrainfuckAPI::Standard: return new StandardBrainfuckImplementation(pointer);
+const std::map<std::string, BrainfuckImplementationEnum> c_BrainfuckImplementations = {
+    { "Standard", BrainfuckImplementationEnum::Standard },
+    { "Extended", BrainfuckImplementationEnum::Extended }
+};
 
-    default:
-        throw std::exception{ "Unknown BrainfuckAPI!" };
-    }
+BrainfuckImplementationEnum GetBrainfuckImplementationFromString(const std::string& name)
+{
+    if (c_BrainfuckImplementations.find(name) == c_BrainfuckImplementations.end())
+        throw std::exception{ "Unknown brainfuck implementation!" };
+
+    return c_BrainfuckImplementations.at(name);
 }
-
-enum Implementations
-{
-    Standard = 0u,
-    Extended
-};
-
-const std::map<std::string, Implementations> g_BrainfuckImplementations = {
-    { "Standard", Implementations::Standard },
-    { "Extended", Implementations::Extended }
-};
 
 BrainfuckImplementation* GetBrainfuckImplementation(const std::string& name, unsigned char* pointer)
 {
-    if (g_BrainfuckImplementations.find(name) == g_BrainfuckImplementations.end())
-        throw std::exception{ "Unknown brainfuck implementation!" };
+    return GetBrainfuckImplementation(GetBrainfuckImplementationFromString(name), pointer);
+}
 
-    switch (g_BrainfuckImplementations.at(name))
+BrainfuckImplementation* GetBrainfuckImplementation(BrainfuckImplementationEnum implementation, unsigned char* pointer)
+{
+    switch (implementation)
     {
-    case Implementations::Standard: return new StandardBrainfuckImplementation(pointer);
-    //case Implementations::Extended: return new ExtendedBrainfuckImplementation(pointer);
+    case BrainfuckImplementationEnum::Standard: return new StandardBrainfuckImplementation(pointer);
+        //case BrainfuckImplementationEnum::Extended: return new ExtendedBrainfuckImplementation(pointer);
 
     default:
         throw std::exception{ "Could not retrieve existing implementation! " };
@@ -44,12 +37,3 @@ BrainfuckImplementation* GetBrainfuckImplementation(const std::string& name, uns
 
 BrainfuckImplementation::BrainfuckImplementation(unsigned char* pointer)
     : p_Pointer(pointer) {}
-
-void BrainfuckImplementation::InterpretTokens(const std::string& source)
-{
-    for (std::size_t i = 0u; i < source.size(); ++i)
-    {
-        if (auto callback = ResolveToken(source[i]))
-            callback(source, i);
-    }
-}

@@ -8,6 +8,8 @@
 
     "Sources": [
         "hello_world.bf",
+        "hello_world.bf",
+        "hello_world.bf",
         "hello_world.bf"
     ]
 }

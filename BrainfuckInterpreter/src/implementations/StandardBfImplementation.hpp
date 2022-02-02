@@ -11,9 +11,9 @@ public:
     StandardBrainfuckImplementation(unsigned char* pointer);
 
 protected:
-    virtual BrainfuckImplementation::TokenCallback ResolveToken(char token) override;
+    virtual void ResolveToken(const std::string& source, std::size_t& index) override;
 
-protected:
+private:
     void IncrementPointer(const std::string& source, std::size_t& index);
     void DecrementPointer(const std::string& source, std::size_t& index);
     void IncrementValue(const std::string& source, std::size_t& index);

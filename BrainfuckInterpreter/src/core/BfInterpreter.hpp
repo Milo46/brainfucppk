@@ -12,7 +12,6 @@
 struct JsonProjectInfo
 {
     uint32_t ProjectVersion = 1u;
-
     std::string Name;
     std::string Implementation;
     

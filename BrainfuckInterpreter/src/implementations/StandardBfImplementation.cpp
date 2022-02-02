@@ -23,27 +23,21 @@ static std::size_t FindClosingBracket(const std::string& source, std::size_t sta
 StandardBrainfuckImplementation::StandardBrainfuckImplementation(unsigned char* pointer)
     : BrainfuckImplementation(pointer), m_LoopsPositions() {}
 
-BrainfuckImplementation::TokenCallback StandardBrainfuckImplementation::ResolveToken(char token)
+void StandardBrainfuckImplementation::ResolveToken(const std::string& source, std::size_t& index)
 {
-    const std::map<char, BrainfuckImplementation::TokenCallback> callbacks = {
-        { BrainfuckToken::IncrementPointer, BF_BIND(StandardBrainfuckImplementation::IncrementPointer) },
-        { BrainfuckToken::DecrementPointer, BF_BIND(StandardBrainfuckImplementation::DecrementPointer) },
-        { BrainfuckToken::IncrementValue,   BF_BIND(StandardBrainfuckImplementation::IncrementValue)   },
-        { BrainfuckToken::DecrementValue,   BF_BIND(StandardBrainfuckImplementation::DecrementValue)   },
-        { BrainfuckToken::Write,            BF_BIND(StandardBrainfuckImplementation::Write)            },
-        { BrainfuckToken::Read,             BF_BIND(StandardBrainfuckImplementation::Read)             },
-        { BrainfuckToken::BeginLoop,        BF_BIND(StandardBrainfuckImplementation::BeginLoop)        },
-        { BrainfuckToken::EndLoop,          BF_BIND(StandardBrainfuckImplementation::EndLoop)          },
-    };
+    switch (source[index])
+    {
+    case BrainfuckToken::IncrementPointer: IncrementPointer(source, index); break;
+    case BrainfuckToken::DecrementPointer: DecrementPointer(source, index); break;
+    case BrainfuckToken::IncrementValue:   IncrementValue(source, index);   break;
+    case BrainfuckToken::DecrementValue:   DecrementValue(source, index);   break;
+    case BrainfuckToken::Write:            Write(source, index);            break;
+    case BrainfuckToken::Read:             Read(source, index);             break;
+    case BrainfuckToken::BeginLoop:        BeginLoop(source, index);        break;
+    case BrainfuckToken::EndLoop:          EndLoop(source, index);          break;
 
-    auto blankCallback = [](const std::string&, std::size_t&) -> void {
-        return void();
-    };
-
-    if (callbacks.find(token) == callbacks.end())
-        return blankCallback;
-
-    return callbacks.at(token);
+    default: break;
+    }
 }
 
 void StandardBrainfuckImplementation::IncrementPointer(const std::string& source, std::size_t& index) { ++p_Pointer; }

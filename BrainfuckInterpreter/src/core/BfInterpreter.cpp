@@ -16,6 +16,19 @@ static std::string ExportFileDirectory(const std::string& filepath)
                                         filepath.find_last_of('\\') + 1u));
 }
 
+static std::string LoadFileContent(const std::string& filepath)
+{
+    auto file = std::ifstream{ filepath };
+
+    if (!file.is_open())
+        THROW_BF_ERROR("Failed to read the file!", 0u);
+
+    auto fileContent = std::string{ std::istreambuf_iterator<char>(file), {} };
+    file.close();
+
+    return fileContent;
+}
+
 BrainfuckInterpreter::Error::Error(const char* message, size_t tokenIndex)
     : std::exception(message), m_TokenIndex(tokenIndex) {}
 
@@ -31,14 +44,11 @@ BrainfuckInterpreter::BrainfuckInterpreter()
 
     for (size_t i = 0u; i < BrainfuckConfiguration::GetMemorySize(); ++i)
         m_Memory[i] = 0u;
-
-    m_Implementation = GetBrainfuckImplementation(m_Pointer);
 }
 
 BrainfuckInterpreter::~BrainfuckInterpreter()
 {
     delete[] m_Memory;
-    delete m_Implementation;
 }
 
 /*void BrainfuckInterpreter::InterpretSection(const std::string& source)
@@ -65,32 +75,25 @@ BrainfuckInterpreter::~BrainfuckInterpreter()
 
 void BrainfuckInterpreter::InterpretFile(const std::string& filepath)
 {
-    auto file = std::ifstream{ filepath };
+    if (!m_Implementation)
+        m_Implementation = GetBrainfuckImplementation("Standard", m_Pointer);
 
-    if (!file.is_open())
-        THROW_BF_ERROR("Failed to read the file!", 0u);
+    auto source = LoadFileContent(filepath);
 
-    auto fileContent = std::string{ std::istreambuf_iterator<char>(file), {} };
-    file.close();
-
-    //return BrainfuckInterpreter::InterpretSection(fileContent);
-    return m_Implementation->InterpretTokens(fileContent);
+    for (std::size_t i = 0u; i < source.size(); ++i)
+        m_Implementation->ResolveToken(source, i);
 }
 
 void BrainfuckInterpreter::ExecuteProject(const std::string& filepath)
 {
-    auto file = std::ifstream{ filepath };
-
-    if (!file.is_open())
-        THROW_BF_ERROR("Failed to load the project file!", 0u);
-
     JsonProjectInfo projectInfo{};
 
     try
     {
         // todo: pack loading json into project by it's method (maybe) (think before doing)
 
-        auto json = nlohmann::json::parse(file);
+        auto fileContent = LoadFileContent(filepath);
+        auto json        = nlohmann::json::parse(fileContent);
 
         projectInfo.ProjectVersion  = json.at("ProjectVersion");
         projectInfo.Name            = json.at("Name");
@@ -106,10 +109,10 @@ void BrainfuckInterpreter::ExecuteProject(const std::string& filepath)
     catch (nlohmann::json::out_of_range&) { THROW_BF_ERROR("Ill-formed json project file!", 0u); }
     catch (nlohmann::json::type_error&)   { THROW_BF_ERROR("Ill-formed json project file!", 0u); }
 
-    file.close();
-
     std::cout << "Executing project \"" << projectInfo.Name << "\"...\n";
     
+    m_Implementation = GetBrainfuckImplementation(projectInfo.Implementation, m_Pointer);
+
     auto filepathDirectory = ExportFileDirectory(filepath);
 
     for (const auto& it : projectInfo.Sources)
@@ -122,6 +125,8 @@ void BrainfuckInterpreter::ExecuteProject(const std::string& filepath)
         std::cout << "[" << correctFilepath << "] -> ";
         InterpretFile(correctFilepath);
     }
+
+    delete m_Implementation;
 }
 
 void BrainfuckInterpreter::ResetEnvironment()
