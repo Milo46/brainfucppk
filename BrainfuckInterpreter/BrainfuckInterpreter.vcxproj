@@ -88,7 +88,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\vendor\json\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\vendor\json\include;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -103,7 +103,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\vendor\json\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\vendor\json\include;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -119,7 +119,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>..\vendor\json\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\vendor\json\include;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -135,7 +135,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <AdditionalIncludeDirectories>..\vendor\json\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\vendor\json\include;$(ProjectDir)\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,22 +145,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\BfImplementation.cpp" />
-    <ClCompile Include="src\BfInterpreter.cpp" />
-    <ClCompile Include="src\BfConfiguration.cpp" />
+    <ClCompile Include="src\core\BfImplementation.cpp" />
+    <ClCompile Include="src\core\BfInterpreter.cpp" />
+    <ClCompile Include="src\core\BfConfiguration.cpp" />
+    <ClCompile Include="src\implementations\Ext1BfImplementation.cpp" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\StandardBfImplementation.cpp" />
+    <ClCompile Include="src\implementations\StandardBfImplementation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\scripts\hello_world.bf" />
     <None Include="resources\scripts\hello_world.json" />
+    <None Include="resources\scripts\hello_world_ext1.bf" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\BfImplementation.hpp" />
-    <ClInclude Include="src\BfInterpreter.hpp" />
-    <ClInclude Include="src\BfTokens.hpp" />
-    <ClInclude Include="src\BfConfiguration.hpp" />
-    <ClInclude Include="src\StandardBfImplementation.hpp" />
+    <ClInclude Include="src\core\BfImplementation.hpp" />
+    <ClInclude Include="src\core\BfInterpreter.hpp" />
+    <ClInclude Include="src\core\BfTokens.hpp" />
+    <ClInclude Include="src\core\BfConfiguration.hpp" />
+    <ClInclude Include="src\implementations\Ext1BfImplementation.hpp" />
+    <ClInclude Include="src\implementations\StandardBfImplementation.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

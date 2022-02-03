@@ -1,5 +1,7 @@
 #include "StandardBfImplementation.hpp"
 
+#include "core/BfInterpreter.hpp"
+
 #include <iostream>
 
 static std::size_t FindClosingBracket(const std::string& source, std::size_t start)
@@ -10,8 +12,8 @@ static std::size_t FindClosingBracket(const std::string& source, std::size_t sta
     {
         switch (source[i])
         {
-        case BrainfuckToken::BeginLoop: ++bracketLevel; break;
-        case BrainfuckToken::EndLoop: if (!(--bracketLevel)) return i; break;
+        case static_cast<char>(BrainfuckToken::BeginLoop): ++bracketLevel; break;
+        case static_cast<char>(BrainfuckToken::EndLoop): if (!(--bracketLevel)) return i; break;
 
         default: break;
         }
@@ -22,6 +24,25 @@ static std::size_t FindClosingBracket(const std::string& source, std::size_t sta
 
 StandardBrainfuckImplementation::StandardBrainfuckImplementation(unsigned char* pointer)
     : BrainfuckImplementation(pointer), m_LoopsPositions() {}
+
+bool StandardBrainfuckImplementation::ResolveToken(const std::string& source, std::size_t& index)
+{
+    switch (source[index])
+    {
+    case static_cast<char>(BrainfuckToken::IncrementPointer): IncrementPointer(source, index); break;
+    case static_cast<char>(BrainfuckToken::DecrementPointer): DecrementPointer(source, index); break;
+    case static_cast<char>(BrainfuckToken::IncrementValue):   IncrementValue(source, index);   break;
+    case static_cast<char>(BrainfuckToken::DecrementValue):   DecrementValue(source, index);   break;
+    case static_cast<char>(BrainfuckToken::Write):            Write(source, index);            break;
+    case static_cast<char>(BrainfuckToken::Read):             Read(source, index);             break;
+    case static_cast<char>(BrainfuckToken::BeginLoop):        BeginLoop(source, index);        break;
+    case static_cast<char>(BrainfuckToken::EndLoop):          EndLoop(source, index);          break;
+
+    default: return false;
+    }
+
+    return true;
+}
 
 void StandardBrainfuckImplementation::IncrementPointer(const std::string& source, std::size_t& index) { ++p_Pointer; }
 void StandardBrainfuckImplementation::DecrementPointer(const std::string& source, std::size_t& index) { --p_Pointer; }

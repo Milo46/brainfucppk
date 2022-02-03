@@ -1,6 +1,6 @@
 #pragma once
 
-enum BrainfuckToken : char
+enum class BrainfuckToken : char
 {
     IncrementPointer = '>',
     DecrementPointer = '<',
@@ -10,4 +10,6 @@ enum BrainfuckToken : char
     Read             = ',',
     BeginLoop        = '[',
     EndLoop          = ']',
+
+    End,
 };

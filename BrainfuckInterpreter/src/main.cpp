@@ -17,16 +17,14 @@
 #include <optional>
 
 #include <nlohmann/json.hpp>
-#include "BfInterpreter.hpp"
+#include "core/BfInterpreter.hpp"
 
 int main(int argc, char** argv)
 {
     try
     {
-        BrainfuckInterpreter bfInterpreter{};
-        //bfInterpreter.InterpretFile("resources/scripts/hello_world.json");
-
-        bfInterpreter.LoadProject("resources/scripts/hello_world.json");
+        BrainfuckInterpreter interpreter{ 30'000u };
+        interpreter.ExecuteProject("resources/scripts/hello_world.json");
 
         return EXIT_SUCCESS;
     }

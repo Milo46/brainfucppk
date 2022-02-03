@@ -2,15 +2,29 @@
 
 #include <iostream>
 #include <fstream>
+#include <vector>
 #include <string>
 
 #include <nlohmann/json.hpp>
 
 #include "BfImplementation.hpp"
 
+struct JsonProjectInfo
+{
+    uint32_t ProjectVersion = 1u;
+    std::string Name;
+    std::string Implementation;
+    
+    bool IsSharingMemory = false;
+
+    std::vector<std::string> Sources;
+};
+
 class BrainfuckInterpreter
 {
 public:
+    struct EndProgram {};
+
     class Error : public std::exception
     {
     public:
@@ -22,23 +36,21 @@ public:
     };
 
 public:
-    friend BrainfuckImplementation;
-
-public:
-    BrainfuckInterpreter();
+    BrainfuckInterpreter(uint32_t memorySize);
     ~BrainfuckInterpreter();
 
-    void InterpretSection(const std::string& source);
     void InterpretFile(const std::string& filepath);
-
-    void LoadProject(const std::string& filepath);
+    void ExecuteProject(const std::string& filepath);
 
 private:
-    bool ValidateProjectFile(const nlohmann::json& json);
+    void ResetEnvironment();
 
 private:
     BrainfuckImplementation* m_Implementation = nullptr;
 
     unsigned char* m_Memory  = nullptr;
     unsigned char* m_Pointer = nullptr;
+
+    uint32_t m_MemorySize;
+    std::string m_Output;
 };
