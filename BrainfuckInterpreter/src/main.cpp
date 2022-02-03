@@ -20,10 +20,15 @@
 
 int main(int argc, char** argv)
 {
+    std::string projectFilepath{};
+
+    std::cout << "Type in json project filepath: ";
+    std::cin >> projectFilepath;
+
     try
     {
         BrainfuckInterpreter interpreter{ 30'000u };
-        interpreter.ExecuteProject("resources/scripts/hello_world.json");
+        interpreter.ExecuteProject(projectFilepath);
 
         return EXIT_SUCCESS;
     }
