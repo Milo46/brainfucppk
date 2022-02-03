@@ -1,6 +1,5 @@
 #include "BfInterpreter.hpp"
 
-#include "BfConfiguration.hpp"
 #include "BfTokens.hpp"
 
 #define THROW_BF_ERROR(_Message, _Index) \

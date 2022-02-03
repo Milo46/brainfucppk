@@ -1,7 +1,6 @@
 #include "BfImplementation.hpp"
 
 #include "core/BfInterpreter.hpp"
-#include "core/BfConfiguration.hpp"
 
 #include "implementations/StandardBfImplementation.hpp"
 #include "implementations/Ext1BfImplementation.hpp"

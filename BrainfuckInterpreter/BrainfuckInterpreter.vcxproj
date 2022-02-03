@@ -147,7 +147,6 @@
   <ItemGroup>
     <ClCompile Include="src\core\BfImplementation.cpp" />
     <ClCompile Include="src\core\BfInterpreter.cpp" />
-    <ClCompile Include="src\core\BfConfiguration.cpp" />
     <ClCompile Include="src\implementations\Ext1BfImplementation.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\implementations\StandardBfImplementation.cpp" />
@@ -161,7 +160,6 @@
     <ClInclude Include="src\core\BfImplementation.hpp" />
     <ClInclude Include="src\core\BfInterpreter.hpp" />
     <ClInclude Include="src\core\BfTokens.hpp" />
-    <ClInclude Include="src\core\BfConfiguration.hpp" />
     <ClInclude Include="src\implementations\Ext1BfImplementation.hpp" />
     <ClInclude Include="src\implementations\StandardBfImplementation.hpp" />
   </ItemGroup>

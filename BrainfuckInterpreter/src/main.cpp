@@ -14,7 +14,6 @@
 */
 
 #include <iostream>
-#include <optional>
 
 #include <nlohmann/json.hpp>
 #include "core/BfInterpreter.hpp"

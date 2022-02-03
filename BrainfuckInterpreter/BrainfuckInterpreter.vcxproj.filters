@@ -27,9 +27,6 @@
     <ClCompile Include="src\core\BfImplementation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\core\BfConfiguration.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\implementations\Ext1BfImplementation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -52,9 +49,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\core\BfTokens.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\core\BfConfiguration.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\implementations\Ext1BfImplementation.hpp">
