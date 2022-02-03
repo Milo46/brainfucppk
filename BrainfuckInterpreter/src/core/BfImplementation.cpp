@@ -4,14 +4,14 @@
 #include "core/BfConfiguration.hpp"
 
 #include "implementations/StandardBfImplementation.hpp"
-#include "implementations/ExtendedBfImplementation.hpp"
+#include "implementations/Ext1BfImplementation.hpp"
 
-const std::map<std::string, BrainfuckImplementationEnum> c_BrainfuckImplementations = {
-    { "Standard", BrainfuckImplementationEnum::Standard },
-    { "Extended1", BrainfuckImplementationEnum::Extended1 }
+const std::map<std::string, BFImplementationEnum> c_BrainfuckImplementations = {
+    { "Standard",  BFImplementationEnum::Standard  },
+    { "Extended1", BFImplementationEnum::Extended1 }
 };
 
-BrainfuckImplementationEnum GetBrainfuckImplementationFromString(const std::string& name)
+BFImplementationEnum GetBrainfuckImplementationFromString(const std::string& name)
 {
     if (c_BrainfuckImplementations.find(name) == c_BrainfuckImplementations.end())
         throw std::exception{ "Unknown brainfuck implementation!" };
@@ -24,12 +24,14 @@ BrainfuckImplementation* GetBrainfuckImplementation(const std::string& name, uns
     return GetBrainfuckImplementation(GetBrainfuckImplementationFromString(name), pointer);
 }
 
-BrainfuckImplementation* GetBrainfuckImplementation(BrainfuckImplementationEnum implementation, unsigned char* pointer)
+BrainfuckImplementation* GetBrainfuckImplementation(BFImplementationEnum implementation, unsigned char* pointer)
 {
     switch (implementation)
     {
-    case BrainfuckImplementationEnum::Standard:  return new StandardBrainfuckImplementation(pointer);
-    case BrainfuckImplementationEnum::Extended1: return new ExtendedBrainfuckImplementation(pointer);
+    case BFImplementationEnum::Standard:  return new StandardBrainfuckImplementation(pointer);
+    case BFImplementationEnum::Extended1: return new Ext1BrainfuckImplementation(pointer);
+    //case BFImplementationEnum::Extended2: return new Ext2BrainfuckImplementation(pointer);
+    //case BFImplementationEnum::Extended3: return new Ext3BrainfuckImplementation(pointer);
 
     default:
         throw std::exception{ "Could not retrieve existing implementation! " };

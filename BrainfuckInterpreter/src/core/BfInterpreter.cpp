@@ -58,8 +58,13 @@ BrainfuckInterpreter::~BrainfuckInterpreter()
 
 void BrainfuckInterpreter::InterpretFile(const std::string& filepath)
 {
+    bool blankImplementation = false;
+
     if (!m_Implementation)
-        m_Implementation = GetBrainfuckImplementation(BrainfuckImplementationEnum::Standard, m_Pointer);
+    {
+        m_Implementation = GetBrainfuckImplementation(BFImplementationEnum::Standard, m_Pointer);
+        blankImplementation = true;
+    }
 
     auto source = LoadFileContent(filepath);
 
@@ -69,6 +74,9 @@ void BrainfuckInterpreter::InterpretFile(const std::string& filepath)
             m_Implementation->ResolveToken(source, i);
     }
     catch (EndProgram&) {}
+
+    if (blankImplementation)
+        delete m_Implementation;
 }
 
 void BrainfuckInterpreter::ExecuteProject(const std::string& filepath)

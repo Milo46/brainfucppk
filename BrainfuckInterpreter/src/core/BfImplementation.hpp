@@ -9,15 +9,17 @@
 class BrainfuckInterpreter;
 class BrainfuckImplementation;
 
-enum class BrainfuckImplementationEnum
+enum class BFImplementationEnum
 {
     Standard,
     Extended1,
+    Extended2,
+    Extended3,
 };
 
-BrainfuckImplementationEnum GetBrainfuckImplementationFromString(const std::string& name);
+BFImplementationEnum GetBrainfuckImplementationFromString(const std::string& name);
 BrainfuckImplementation* GetBrainfuckImplementation(const std::string& name, unsigned char* pointer);
-BrainfuckImplementation* GetBrainfuckImplementation(BrainfuckImplementationEnum implementation, unsigned char* pointer);
+BrainfuckImplementation* GetBrainfuckImplementation(BFImplementationEnum implementation, unsigned char* pointer);
 
 class BrainfuckImplementation
 {

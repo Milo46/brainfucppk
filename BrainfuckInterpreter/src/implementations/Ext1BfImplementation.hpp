@@ -2,7 +2,7 @@
 
 #include "StandardBfImplementation.hpp"
 
-enum class ExtendedBrainfuckToken : char
+enum class Ext1BrainfuckToken : char
 {
     Begin = static_cast<char>(StandardBrainfuckToken::End),
 
@@ -19,10 +19,10 @@ enum class ExtendedBrainfuckToken : char
     End,
 };
 
-class ExtendedBrainfuckImplementation : public StandardBrainfuckImplementation
+class Ext1BrainfuckImplementation : public StandardBrainfuckImplementation
 {
 public:
-    ExtendedBrainfuckImplementation(unsigned char* pointer);
+    Ext1BrainfuckImplementation(unsigned char* pointer);
 
 protected:
     virtual bool ResolveToken(const std::string& source, std::size_t& index) override;
