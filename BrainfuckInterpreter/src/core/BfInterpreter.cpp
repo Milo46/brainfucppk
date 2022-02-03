@@ -3,16 +3,8 @@
 #include "BfConfiguration.hpp"
 #include "BfTokens.hpp"
 
-#include <optional>
-
 #define THROW_BF_ERROR(_Message, _Index) \
     throw ::BrainfuckInterpreter::Error{ _Message, _Index }
-
-static std::optional<unsigned char> Func(int x)
-{
-    if (!(x % 2)) return 'X';
-    return std::nullopt;
-}
 
 static std::string ExportFileDirectory(const std::string& filepath)
 {
