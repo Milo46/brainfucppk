@@ -162,6 +162,7 @@
     <ClInclude Include="src\core\BfTokens.hpp" />
     <ClInclude Include="src\implementations\Ext1BfImplementation.hpp" />
     <ClInclude Include="src\implementations\StandardBfImplementation.hpp" />
+    <ClInclude Include="src\utility\Noncopyable.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

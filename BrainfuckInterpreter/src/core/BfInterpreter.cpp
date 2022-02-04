@@ -2,8 +2,21 @@
 
 #include "BfTokens.hpp"
 
+#include <nlohmann/json.hpp>
+
 #define THROW_BF_ERROR(_Message, _Index) \
     throw ::BrainfuckInterpreter::Error{ _Message, _Index }
+
+struct JsonProjectInfo
+{
+    uint32_t ProjectVersion = 1u;
+    std::string Name;
+    std::string Implementation;
+
+    bool IsSharingMemory = false;
+
+    std::vector<std::string> Sources;
+};
 
 static std::string ExportFileDirectory(const std::string& filepath)
 {

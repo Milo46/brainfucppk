@@ -13,7 +13,7 @@ enum class StandardBrainfuckToken : char
 class StandardBrainfuckImplementation : public BrainfuckImplementation
 {
 public:
-    StandardBrainfuckImplementation(unsigned char* pointer);
+    explicit StandardBrainfuckImplementation(unsigned char* pointer);
 
 protected:
     virtual bool ResolveToken(const std::string& source, std::size_t& index) override;
