@@ -22,7 +22,7 @@ enum class Ext1BrainfuckToken : char
 class Ext1BrainfuckImplementation : public StandardBrainfuckImplementation
 {
 public:
-    Ext1BrainfuckImplementation(unsigned char* pointer);
+    explicit Ext1BrainfuckImplementation(unsigned char* pointer);
 
 protected:
     virtual bool ResolveToken(const std::string& source, std::size_t& index) override;

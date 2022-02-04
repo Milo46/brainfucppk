@@ -54,5 +54,8 @@
     <ClInclude Include="src\implementations\Ext1BfImplementation.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\utility\Noncopyable.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

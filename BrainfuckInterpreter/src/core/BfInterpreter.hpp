@@ -5,22 +5,11 @@
 #include <vector>
 #include <string>
 
-#include <nlohmann/json.hpp>
-
 #include "BfImplementation.hpp"
 
-struct JsonProjectInfo
-{
-    uint32_t ProjectVersion = 1u;
-    std::string Name;
-    std::string Implementation;
-    
-    bool IsSharingMemory = false;
+#include "utility/Noncopyable.hpp"
 
-    std::vector<std::string> Sources;
-};
-
-class BrainfuckInterpreter
+class BrainfuckInterpreter : private NonCopyable<BrainfuckInterpreter>
 {
 public:
     struct EndProgram {};
@@ -36,7 +25,7 @@ public:
     };
 
 public:
-    BrainfuckInterpreter(uint32_t memorySize);
+    explicit BrainfuckInterpreter(uint32_t memorySize);
     ~BrainfuckInterpreter();
 
     void InterpretFile(const std::string& filepath);
