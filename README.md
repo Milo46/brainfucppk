@@ -5,7 +5,7 @@
 Simple and easy to use brainfuck interpreter with ability to merge
 multiple source files into one thing and personalized options.
 
-# 📖 How to start
+## 📖 How to start
 
 To get started you have to create a project file which is
 nothing other than a json file. Here's the example:
@@ -27,7 +27,7 @@ nothing other than a json file. Here's the example:
 ```
 
 Every json project file has to contain information about:
-- ProjectVersion: int -> what version of project file you're currently using (project version and interpreter version are not the same things),
-- Name: string -> project's name,
-- Implementation: string -> brainfuck's implementation which your source code is using and is being supported by interpreter,
-- ShareMemory: boolean -> determines whether memory is being reset between the execution of each source code in the project.
+  - ProjectVersion: int -> what version of project file you're currently using (project version and interpreter version are not the same things),
+  - Name: string -> project's name,
+  - Implementation: string -> brainfuck's implementation which your source code is using and is being supported by interpreter,
+  - ShareMemory: boolean -> determines whether memory is being reset between the execution of each source code in the project.
