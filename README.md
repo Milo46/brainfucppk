@@ -1,5 +1,6 @@
 # 💫 Brainfucppk - Brainfuck Interpreter
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1ac05cea2b5e4e9b8e5d445345529c5b)](https://app.codacy.com/gh/Milo46/brainfucppk?utm_source=github.com&utm_medium=referral&utm_content=Milo46/brainfucppk&utm_campaign=Badge_Grade_Settings)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/cca2ef348b2e449fb29015a63482827b)](https://www.codacy.com/gh/Milo46/brainfuck-interpreter/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Milo46/brainfuck-interpreter&amp;utm_campaign=Badge_Grade)
 
 Simple and easy to use brainfuck interpreter with ability to merge
