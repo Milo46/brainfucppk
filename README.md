@@ -30,4 +30,5 @@ Every json project file has to contain information about:
 -   ProjectVersion: int -> what version of project file you're currently using (project version and interpreter version are not the same things),
 -   Name: string -> project's name,
 -   Implementation: string -> brainfuck's implementation which your source code is using and is being supported by interpreter,
--   ShareMemory: boolean -> determines whether memory is being reset between the execution of each source code in the project.
+-   ShareMemory: boolean -> determines whether memory is being reset between the execution of each source code in the project,
+-   Sources: string[] -> list of all source files which will be interpreted.
