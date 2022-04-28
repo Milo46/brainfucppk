@@ -13,10 +13,19 @@
         - Detect infinite loops! //auto result = bfInterpreter.InterpretSection("++[><]", 0u);
 */
 
+/*
+    New application:
+        - arguments parser (interpret single file or entire project)
+            * brainfuccpk.exe --file example.bf
+            * brainfuccpk.exe --project example.json
+*/
+
+// todo: new error system, check experimental project on your disk!
+
 #include <iostream>
 
-#include <nlohmann/json.hpp>
 #include "core/BfInterpreter.hpp"
+#include "core/BfErrors.hpp"
 
 int main(int argc, char** argv)
 {
@@ -29,23 +38,16 @@ int main(int argc, char** argv)
     {
         BrainfuckInterpreter interpreter{ 30'000u };
         interpreter.ExecuteProject(projectFilepath);
-
-        return EXIT_SUCCESS;
     }
-    catch (BrainfuckInterpreter::Error& e)
+    catch (BrainfuckError& e)
     {
-        std::cerr << "Brainfuck interpreter exception has occurred: \n"
-            "\tMessage: "  << e.what()          << "\n"
-            "\tPosition: " << e.GetTokenIndex() << "\n";
+        std::cerr << e.what() << '\n';
+        return EXIT_FAILURE;
     }
-    catch (std::exception& e)
+    catch (std::runtime_error& e)
     {
-        std::cerr << "An exception has occurred: " << e.what() << '\n';
-    }
-    catch (...)
-    {
-        std::cerr << "Something went really wrong, unhandled exception has been thrown!\n";
+        
     }
 
-    return EXIT_FAILURE;
+    return EXIT_SUCCESS;
 }

@@ -1,0 +1,12 @@
+{
+    "projectVersion": "1.0.0",
+    "data": {
+        "name": "Hello, World!",
+        "implementation": "Extended1",
+        "sharedMemory": false
+    },
+    "sources": [
+        "hello_world.bf",
+        "hello_world_ext1.bf"
+    ]
+}

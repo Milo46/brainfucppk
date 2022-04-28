@@ -12,16 +12,15 @@ nothing other than a json file. Here's the example:
 
 ```json
 {
-    "ProjectVersion": 1,
-
-    "Name": "Hello, World!",
-    "Implementation": "Standard",
-
-    "ShareMemory": false,
-
-    "Sources": [
+    "projectVersion": "1.0.0",
+    "data": {
+        "name": "Hello, World!",
+        "implementation": "Extended1",
+        "sharedMemory": false
+    },
+    "sources": [
         "hello_world.bf",
-        "fibonacci.bf"
+        "hello_world_ext1.bf"
     ]
 }
 ```

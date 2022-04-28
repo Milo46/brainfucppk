@@ -1,19 +1,20 @@
-#include "BfImplementation.hpp"
+#include "core/BfImplementation.hpp"
 
 #include "core/BfInterpreter.hpp"
+#include "core/BfErrors.hpp"
 
 #include "implementations/StandardBfImplementation.hpp"
 #include "implementations/Ext1BfImplementation.hpp"
 
 const std::map<std::string, BFImplementationEnum> c_BrainfuckImplementations = {
     { "Standard",  BFImplementationEnum::Standard  },
-    { "Extended1", BFImplementationEnum::Extended1 }
+    { "Extended1", BFImplementationEnum::Extended1 },
 };
 
 BFImplementationEnum GetBrainfuckImplementationFromString(const std::string& name)
 {
     if (c_BrainfuckImplementations.find(name) == c_BrainfuckImplementations.end())
-        throw std::exception{ "Unknown brainfuck implementation!" };
+        throw BrainfuckBasicError::Create("unknown brainfuck implementation!");
 
     return c_BrainfuckImplementations.at(name);
 }
@@ -33,9 +34,11 @@ BrainfuckImplementation* GetBrainfuckImplementation(BFImplementationEnum impleme
     //case BFImplementationEnum::Extended3: return new Ext3BrainfuckImplementation(pointer);
 
     default:
-        throw std::exception{ "Could not retrieve existing implementation! " };
+        throw BrainfuckBasicError::Create("could not retrieve existing implementation!");
     }
+
+    return nullptr;
 }
 
 BrainfuckImplementation::BrainfuckImplementation(unsigned char* pointer)
-    : p_Pointer(pointer) {}
+    : p_Pointer{ pointer } {}
