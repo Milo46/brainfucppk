@@ -1,7 +1,7 @@
 #pragma once
 
 template<typename _Ty>
-struct NonCopyable
+class NonCopyable
 {
 public:
     NonCopyable(const NonCopyable&) = delete;

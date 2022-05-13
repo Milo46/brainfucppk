@@ -2,12 +2,15 @@ set(This Brainfucppk)
 project(${This} LANGUAGES CXX)
 
 set(Sources
-    src/core/BfErrors.cpp
-    src/core/BfImplementation.cpp
-    src/core/BfInterpreter.cpp
-    src/implementations/Ext1BfImplementation.cpp
-    src/implementations/StandardBfImplementation.cpp
-    src/utility/FileData.cpp
+    src/core/Errors.cpp
+    src/core/Implementation.cpp
+    src/core/Interpreter.cpp
+    src/core/ProjectInterpreter.cpp
+
+    src/implementations/Ext1Implementation.cpp
+    src/implementations/StandardImplementation.cpp
+
+    src/utility/SemanticVersion.cpp
 )
 
 add_library(${This} STATIC ${Sources})
