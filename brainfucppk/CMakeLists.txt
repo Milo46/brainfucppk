@@ -5,7 +5,6 @@ set(Sources
     src/core/Errors.cpp
     src/core/Implementation.cpp
     src/core/Interpreter.cpp
-    src/core/ProjectInterpreter.cpp
 
     src/implementations/Ext1Implementation.cpp
     src/implementations/StandardImplementation.cpp
